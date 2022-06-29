@@ -1,0 +1,12 @@
+app:
+  run-util: ${RUN_UTIL}
+  file: ${FILE_DIRECTORY}file${CUSTOM_HOST_NAME:}.txt
+  ftp-file: /file.txt
+  host: ${CUSTOM_HOST_NAME:}
+ftp:
+  server: ${PASV_ADDRESS}
+  port: ${FTP_PORT}
+  username: ${FTP_USER}
+  password: ${FTP_PASS}
+  passive-mode: ${FTP_PASSIVE}
+  log.enabled: ${FTP_LOG}

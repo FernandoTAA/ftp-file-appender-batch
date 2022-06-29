@@ -1,0 +1,135 @@
+version: '3.9'
+services:
+
+  ftp:
+    container_name: ftp
+    image: bogem/ftp
+    ports:
+      - "20:20"
+      - "21:21"
+      - "47400-47470:47400-47470"
+    env_file: ../ftp.env
+    restart: always
+    networks:
+      - bubble
+
+  batch-1:
+    container_name: batch-1
+    build: ../..
+    env_file:
+      - ../ftp.env
+      - ../batch.env
+    environment:
+      CUSTOM_HOST_NAME: app-1
+    networks:
+      - bubble
+    depends_on:
+      - ftp
+
+  batch-2:
+    container_name: batch-2
+    build: ../..
+    env_file:
+      - ../ftp.env
+      - ../batch.env
+    environment:
+      CUSTOM_HOST_NAME: app-2
+    networks:
+      - bubble
+    depends_on:
+      - ftp
+
+  batch-3:
+    container_name: batch-3
+    build: ../..
+    env_file:
+      - ../ftp.env
+      - ../batch.env
+    environment:
+      CUSTOM_HOST_NAME: app-3
+    networks:
+      - bubble
+    depends_on:
+      - ftp
+
+  batch-4:
+    container_name: batch-4
+    build: ../..
+    env_file:
+      - ../ftp.env
+      - ../batch.env
+    environment:
+      CUSTOM_HOST_NAME: app-4
+    networks:
+      - bubble
+    depends_on:
+      - ftp
+
+  batch-5:
+    container_name: batch-5
+    build: ../..
+    env_file:
+      - ../ftp.env
+      - ../batch.env
+    environment:
+      CUSTOM_HOST_NAME: app-5
+    networks:
+      - bubble
+    depends_on:
+      - ftp
+
+  batch-6:
+    container_name: batch-6
+    build: ../..
+    env_file:
+      - ../ftp.env
+      - ../batch.env
+    environment:
+      CUSTOM_HOST_NAME: app-6
+    networks:
+      - bubble
+    depends_on:
+      - ftp
+
+  batch-7:
+    container_name: batch-7
+    build: ../..
+    env_file:
+      - ../ftp.env
+      - ../batch.env
+    environment:
+      CUSTOM_HOST_NAME: app-7
+    networks:
+      - bubble
+    depends_on:
+      - ftp
+
+  batch-8:
+    container_name: batch-8
+    build: ../..
+    env_file:
+      - ../ftp.env
+      - ../batch.env
+    environment:
+      CUSTOM_HOST_NAME: app-8
+    networks:
+      - bubble
+    depends_on:
+      - ftp
+
+  batch-9:
+    container_name: batch-9
+    build: ../..
+    env_file:
+      - ../ftp.env
+      - ../batch.env
+    environment:
+      CUSTOM_HOST_NAME: app-9
+    networks:
+      - bubble
+    depends_on:
+      - ftp
+
+networks:
+  bubble:
+    external: true
